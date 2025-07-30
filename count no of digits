@@ -1,0 +1,15 @@
+n=int(input())
+count=0
+while(n>0):
+    n=n//10
+    count+=1
+print(count)
+#1234
+#n=1234//10=123-quotient rem=4
+#count=1
+#n=123//10=12-quotient rem=3
+#count=2
+##n=12//10=1-quotient rem=2
+#count=3
+#n=1//10=0-quotient rem=0
+#count=4#
