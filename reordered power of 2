@@ -1,0 +1,9 @@
+class Solution(object):
+    def reorderedPowerOf2(self, n):
+        def count_digits(x):
+            return tuple(sorted(str(x)))
+        n_count=count_digits(n)
+        for i in range(31):
+            if n_count==count_digits(1<<i):
+                return True
+        return False
