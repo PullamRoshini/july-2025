@@ -1,0 +1,34 @@
+class Solution(object):
+    def judgePoint24(self, cards):
+        import itertools
+        TARGET=24.0
+        EPSILON=1e-6
+        def dfs(nums):
+            if len(nums)==1:
+                return abs(nums[0]-TARGET)<EPSILON
+            for i in range(len(nums)):
+                for j in range(len(nums)):
+                    if i!=j:
+                        next_nums=[]
+                        for k in range(len(nums)):
+                            if k!=i and k!=j:
+                                next_nums.append(nums[k])
+                        for val in compute(nums[i],nums[j]):
+                            next_nums.append(val)
+                            if dfs(next_nums):
+                                return True
+                            next_nums.pop()
+            return False
+        def compute(a,b):
+            results=[a+b,a-b,b-a,a*b]
+            if abs(b)>1e-6:
+                results.append(a*1.0/b)
+            if abs(a)>1e-6:
+                results.append(b*1.0/a)
+            return results
+        nums=[float(x)for  x in cards]
+        return dfs(nums)
+
+
+
+       
