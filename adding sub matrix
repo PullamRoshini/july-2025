@@ -1,0 +1,23 @@
+class Solution(object):
+    def numSubmat(self, mat):
+        m,n=len(mat),len(mat[0])
+        heights=[0]*n
+        ans=0
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j]==0:
+                    heights[j]=0
+                else:
+                    heights[j]+=1
+            stack=[]
+            sum_row=0
+            for j in range(n):
+                count=1
+                while stack and stack[-1][0]>=heights[j]:
+                    h,c=stack.pop()
+                    sum_row-=h*c
+                    count+=c
+                stack.append((heights[j],count))
+                sum_row +=heights[j]*count
+                ans+= sum_row
+        return ans
