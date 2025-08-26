@@ -1,0 +1,13 @@
+class Solution(object):
+    def areaOfMaxDiagonal(self, dimensions):
+        best_d2=-1
+        best_area=0
+        for l,w in dimensions:
+            d2=l*l + w*w
+            area=l*w
+            if d2>best_d2 or(d2==best_d2 and area >best_area):
+                best_d2=d2
+                best_area=area
+        return best_area
+    
+        
